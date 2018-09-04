@@ -1,7 +1,7 @@
 {
   "name": "promise-composer",
   "version": "0.1.0",
-  "description": "A tool allowing composition with promises in JS",
+  "description": "A tool allowing simple conditional composition with promises in JS",
   "main": "index.js",
   "scripts": {
     "test": "node test.js"

@@ -1,5 +1,8 @@
 # How to install ?
 
+Pre-note : This package uses `module.exports`, and therefore is mostly
+compatible with Node.js by default.
+
 1. Run `npm install promise-composer`
 2. Include the Promise Composer Object (PCO) with the following code :
 

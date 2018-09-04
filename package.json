@@ -1,0 +1,24 @@
+{
+  "name": "promise-composer",
+  "version": "0.1.0",
+  "description": "A tool allowing composition with promises in JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FalconPilot/promise-composer.git"
+  },
+  "keywords": [
+    "promise",
+    "js",
+    "javascript"
+  ],
+  "author": "FalconPilot",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FalconPilot/promise-composer/issues"
+  },
+  "homepage": "https://github.com/FalconPilot/promise-composer#readme"
+}

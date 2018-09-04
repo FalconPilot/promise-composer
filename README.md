@@ -35,3 +35,14 @@ new Promise((resolve, reject) => resolve(value))
 ```
 
 It still has room for improvement, but I do think it
+
+# Common assertion functions
+
+`PCO.isset`
+Checks if an element isn't undefined
+
+`PCO.exists`
+Checks if an element isn't undefined and is non-null
+
+`PCO.fullString`
+Checks if an element is a non-empty string (trims whitespaces)

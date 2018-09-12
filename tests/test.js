@@ -1,17 +1,17 @@
-const PCO = require('./index.js')
+const PCO = require('../index.js')
 
 /*
-**  PCO.isset
-**
-**  Expected behavior : Promise should
+**  PCO unit tests
 */
 
 const ASSERTION_FALSE = "ASSERTION_FALSE"
 
+// Generate empty promise for easy chaining
 function genPromise(value) {
   return new Promise((resolve, reject) => resolve(value))
 }
 
+// Test helper
 function test(func, value, assertion = value) {
   genPromise(value)
     .then(func)
@@ -19,6 +19,7 @@ function test(func, value, assertion = value) {
     .catch(err => handleResponse(func, err, assertion))
 }
 
+// Function response handler
 function handleResponse(func, value, assertion) {
   const result = value === assertion ? "OK" : "KO :("
   const ast = typeof value === "string" ? `"${assertion}"` : assertion
@@ -27,6 +28,10 @@ function handleResponse(func, value, assertion) {
   console.log(`|___ Expecting ${ast}`)
   console.log(`|___ Obtained  ${val}\n`)
 }
+
+/*
+**  Play unit tests
+*/
 
 console.log("\n--- Starting tests... ---\n")
 
@@ -44,6 +49,8 @@ const tests = [
   test(PCO.exists, "", ""),
 
   // PCO.fullString
+  test(PCO.fullString, null, ASSERTION_FALSE),
+  test(PCO.fullString, undefined, ASSERTION_FALSE),
   test(PCO.fullString, " ", ASSERTION_FALSE),
   test(PCO.fullString, "Coucou")
 

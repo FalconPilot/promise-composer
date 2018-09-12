@@ -4,15 +4,14 @@
 
 class PCO {
 
-  // Assertion handling function
+  // Local assertion handling function
   static assert(value, assertion) {
     return new Promise((resolve, reject) => {
       if (assertion) { resolve(value) } else { reject("ASSERTION_FALSE") }
     })
   }
 
-  // Private method to simply return assertion, used for internal
-  // functionality
+  // Local method to simply return assertion, used for internal functionality
   static cond(x, assertion) { return assertion }
 
   /*

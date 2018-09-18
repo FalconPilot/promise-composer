@@ -50,7 +50,9 @@ function assertInteger(x) { return typeof x === "number" && Number.isInteger(x) 
 const isInteger = (x) => PCO.asser(x, assertInteger)
 
 Promise.resolve(15)
-  .then()
+  .then(isInteger)
+  .then(doOtherStuff)
+  .catch(computeError)
 ```
 
 # Common assertion functions

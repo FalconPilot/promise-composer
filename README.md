@@ -62,10 +62,16 @@ Check if an element isn't undefined
 Check if an element isn't undefined and is non-null
 
 `PCO.fullString`
-Check if an element is a non-empty string (trims whitespaces)
+Check if an element is a non-empty Sstring (trims whitespaces)
 
 `PCO.isObject`
-Check if an element is a non-array object
+Check if an element is a non-array Object
 
 `PCO.isArray`
 Check if an element is a valid Array
+
+`PCO.isNumber`
+Check if an element is a valid Number
+
+`PCO.isInteger`
+Check if an element is a valid Integer

@@ -30,22 +30,42 @@ if (myCheckingFunc(value) && myOtherFunc(value)) {
 You could just write :
 
 ```javascript
-new Promise((resolve, reject) => resolve(value))
+Promise.resolve(value)
   .then(PCO.myCheckingFunc)
   .then(PCO.myOtherFunc)
   .then(doStuff)
   .catch(doOtherStuff)
 ```
 
-It still has room for improvement, but I do think it
+It still is pretty minimal, but I do think this can be of help to ensure a
+layer of dynamical verification without having to cope with `if/else` forests
+or huge monolithic `switch/case` blocks.
+
+# Create an assertion
+
+To create an assertion function, you only have to use the `PCO.assert` function.
+
+```javascript
+function assertInteger(x) { return typeof x === "number" && Number.isInteger(x) }
+const isInteger = (x) => PCO.asser(x, assertInteger)
+
+Promise.resolve(15)
+  .then()
+```
 
 # Common assertion functions
 
 `PCO.isset`
-Checks if an element isn't undefined
+Check if an element isn't undefined
 
 `PCO.exists`
-Checks if an element isn't undefined and is non-null
+Check if an element isn't undefined and is non-null
 
 `PCO.fullString`
-Checks if an element is a non-empty string (trims whitespaces)
+Check if an element is a non-empty string (trims whitespaces)
+
+`PCO.isObject`
+Check if an element is a non-array object
+
+`PCO.isArray`
+Check if an element is a valid Array

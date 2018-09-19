@@ -1,10 +1,7 @@
 # How to install ?
 
-Pre-note : This package uses `module.exports`, and therefore is mostly
-compatible with Node.js by default.
-
 1. Run `npm install promise-composer`
-2. Include the Promise Composer Object (PCO) with the following code :
+2. Include the Promise Composer Object (PCO) with something like :
 
 ```javascript
 var PCO = require('promise-composer');
@@ -12,9 +9,8 @@ var PCO = require('promise-composer');
 
 # What does it do ?
 
-Promise Composer is a small JS library to use conditional
-composers in Promises to be able to handle potential errors into your code
-directly inside of promises.
+Promise Composer is a small JS library that gives some utility tools and
+functions to help asynchronous processes to dynamically check/validate data.
 
 I wrote it since I was tired of checking type errors manually using the
 same old `if/else` or `switch/case` methods, so instead of writing :
@@ -43,37 +39,41 @@ or huge monolithic `switch/case` blocks.
 
 # Create an assertion
 
-To create an assertion function, you only have to use the `PCO.assert` function.
+To create a custom assertion function, you only have to use the `PCO.assert`
+function.
 
 ```javascript
-function assertInteger(x) { return typeof x === "number" && Number.isInteger(x) }
-const isInteger = (x) => PCO.asser(x, assertInteger)
+function validateObject(x) {
+  return Array.isArray(x)
+    && x.length > 3
+    && x.length < 9
+}
 
 Promise.resolve(15)
-  .then(isInteger)
+  .then(x => PCO.assert(x, validateObject))
   .then(doOtherStuff)
   .catch(computeError)
 ```
 
 # Common assertion functions
 
-`PCO.isset`
+• `PCO.isset`
 Check if an element isn't undefined
 
-`PCO.exists`
+• `PCO.exists`
 Check if an element isn't undefined and is non-null
 
-`PCO.fullString`
+• `PCO.fullString`
 Check if an element is a non-empty Sstring (trims whitespaces)
 
-`PCO.isObject`
+• `PCO.isObject`
 Check if an element is a non-array Object
 
-`PCO.isArray`
+• `PCO.isArray`
 Check if an element is a valid Array
 
-`PCO.isNumber`
+• `PCO.isNumber`
 Check if an element is a valid Number
 
-`PCO.isInteger`
+• `PCO.isInteger`
 Check if an element is a valid Integer

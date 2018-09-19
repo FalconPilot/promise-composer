@@ -1,1 +1,6 @@
+# Local directories
 tests
+src
+
+# Webpack config
+webpack.config.js

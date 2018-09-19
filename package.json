@@ -1,6 +1,6 @@
 {
   "name": "promise-composer",
-  "version": "0.3.1",
+  "version": "0.3.3",
   "description": "A tool allowing simple conditional composition with promises in JS",
   "main": "lib/promise-composer-build.js",
   "directories": {
@@ -9,6 +9,7 @@
   },
   "scripts": {
     "test": "node tests/test.js",
+    "test-mute": "node tests/test.js --mute",
     "build": "webpack --config webpack.config.js"
   },
   "repository": {

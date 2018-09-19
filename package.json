@@ -1,8 +1,12 @@
 {
   "name": "promise-composer",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A tool allowing simple conditional composition with promises in JS",
-  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "main": "./lib/promise-composer.js",
   "scripts": {
     "test": "node tests/test.js"
   },

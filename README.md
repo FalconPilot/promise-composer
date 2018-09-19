@@ -77,3 +77,42 @@ Check if an element is a valid Number
 
 • `PCO.isInteger`
 Check if an element is a valid Integer
+
+# Multiple assertions
+
+If you need multiple validations at once, you can use two important functions :
+
+• `PCO.any`
+This functions acts as an "or" operator. It will proceed if any of the
+given assertions is true.
+
+*Example*
+```javascript
+Promise.resolve("Coucou")
+  .then(x => PCO.any(x, [PCO.fullString, PCO.isset]))
+  .then(doStuff)
+  .catch(computeError)
+
+// This example should not trigger the .catch() block
+```
+
+• `PCO.all`
+This function acts as an "and" operator. It will proceed if all of the
+given assertions are true.
+
+*Example*
+```javascript
+Promise.resolve("Coucou")
+  .then(x => PCO.all(x, [PCO.fullString, PCO.isset]))
+  .then(doStuff)
+  .catch(computeError)
+
+// This example should trigger the .catch() block !
+```
+
+*Important !*
+
+`PCO.any` and `PCO.all` both require as a second argument an array of
+assertions. You can use standard PCO assertion functions as well as
+custom assertion functions (this might be useful for dataset validation
+for instance).

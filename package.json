@@ -1,6 +1,6 @@
 {
   "name": "promise-composer",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A tool allowing simple conditional composition with promises in JS",
   "main": "lib/promise-composer-build.js",
   "directories": {
@@ -27,6 +27,9 @@
   },
   "homepage": "https://github.com/FalconPilot/promise-composer#readme",
   "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "babel-loader": "^8.0.2",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.0"
   }

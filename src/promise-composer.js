@@ -1,3 +1,5 @@
+"use strict";
+
 /*
 **  Promise Composer Object class
 */

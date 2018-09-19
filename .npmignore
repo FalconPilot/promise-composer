@@ -2,5 +2,6 @@
 tests
 src
 
-# Webpack config
+# Config files
 webpack.config.js
+.babelrc

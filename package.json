@@ -1,16 +1,18 @@
 {
   "name": "promise-composer",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "A tool allowing simple conditional composition with promises in JS",
   "main": "lib/promise-composer-build.js",
   "directories": {
+    "src": "src",
     "lib": "lib",
-    "test": "test"
+    "test": "tests"
   },
   "scripts": {
-    "test": "node tests/test.js",
-    "test-mute": "node tests/test.js --mute",
-    "build": "webpack --config webpack.config.js"
+    "test": "node tests/start.js",
+    "test-mute": "node tests/start.js --mute",
+    "build": "webpack --config webpack.config.js",
+    "prepublishOnly": "webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",

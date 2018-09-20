@@ -22,7 +22,7 @@ class PCO {
   }
 
   // Muted assertion handling function (doesn't reject, only resolve)
-  static mutedPromise(value, assertion) {
+  static mutedResult(value, assertion) {
     return assertion ? Promise.resolve(value) : Promise.resolve(PCO.ASSERTION_FALSE)
   }
 
@@ -43,7 +43,7 @@ class PCO {
 
   // General multiple assertion helper
   static multiAssert(x, assertions, verif) {
-    return Promise.all(assertions.map(a => a(x, PCO.mutedPromise)))
+    return Promise.all(assertions.map(a => a(x, PCO.mutedResult)))
       .then(raw => {
         const values = raw.filter(v => v !== PCO.ASSERTION_FALSE)
 
@@ -64,6 +64,21 @@ class PCO {
   // Continue if one condition at least is true
   static any(x, assertions) {
     return PCO.multiAssert(x, assertions, (r, v) => v.length > 0 || r.length === 0)
+  }
+
+  // Traverse array of values to confirm assertions to them
+  static traverse(values, assertion) {
+    return Promise.all(values.map(x => assertion(x, PCO.mutedResult)))
+      .then(raw => {
+        const values = raw.filter(v => v !== PCO.ASSERTION_FALSE)
+
+        // Throw a .catch() clause if not all values are validated
+        if (values.length === raw.length) {
+          return values
+        } else {
+          throw PCO.ASSERTION_FALSE
+        }
+      })
   }
 
   /*

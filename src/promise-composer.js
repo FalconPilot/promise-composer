@@ -30,7 +30,7 @@ class PCO {
   static pure(x, assertion) { return assertion }
 
   /*
-  **  Make assertion functions customizable
+  **  Create custom assertion function
   */
 
   static assert(x, assertFunc, func = PCO.result) {
@@ -38,7 +38,7 @@ class PCO {
   }
 
   /*
-  **  Functions to allow more complex conditional composition
+  **  Functions to allow more complex conditional composition using Arrays
   */
 
   // General multiple assertion helper
@@ -100,15 +100,16 @@ class PCO {
 
   // Assert element is a non-empty string
   static fullString(x, func = PCO.result) {
-    return func(x, PCO.exists(x, PCO.pure)
-      && typeof x === "string"
+    return func(x, typeof x === "string"
       && x.trim() !== ""
     )
   }
 
   // Assert element is valid non-array object
   static isObject(x, func = PCO.result) {
-    return func(x, typeof x === "object" && !Array.isArray(x))
+    return func(x, typeof x === "object"
+      && !Array.isArray(x)
+    )
   }
 
   // Assert element is valid array

@@ -102,7 +102,7 @@ given assertions are true.
 
 *Example*
 ```javascript
-Promise.resolve("Coucou")
+Promise.resolve(15)
   .then(x => PCO.all(x, [PCO.fullString, PCO.isset]))
   .then(doStuff)
   .catch(computeError)
@@ -116,3 +116,18 @@ Promise.resolve("Coucou")
 assertions. You can use standard PCO assertion functions as well as
 custom assertion functions (this might be useful for dataset validation
 for instance).
+
+# Verify assertion on multiple values
+
+You can use `PCO.traverse` using an array of values instead of a single value
+to check every value inside the array with your assertion.
+
+*Example*
+```javascript
+Promise.resolve(["foo", "bar", null])
+  .then(x => PCO.traverse(x, PCO.exists))
+  .then(doStuff)
+  .catch(computeError)
+
+// This exemple should trigger the .catch() block !
+```

@@ -106,9 +106,11 @@ Promise.all([
   testArray(PCO.any, [PCO.fullString, PCO.isInteger], "test"),
   testArray(PCO.any, [PCO.fullString, PCO.isInteger], 15.5, PCO.ASSERTION_FALSE),
   testArray(PCO.any, [PCO.fullString, PCO.exists], ""),
+  testArray(PCO.any, [], "test"),
 
   // PCO.all
-  testArray(PCO.all, [PCO.fullString, PCO.exists], "", PCO.ASSERTION_FALSE)
+  testArray(PCO.all, [PCO.fullString, PCO.exists], "", PCO.ASSERTION_FALSE),
+  testArray(PCO.all, [], "test")
 
 ]).then(values => {
 

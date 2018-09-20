@@ -63,7 +63,7 @@ class PCO {
 
   // Continue if one condition at least is true
   static any(x, assertions) {
-    return PCO.multiAssert(x, assertions, (r, v) => v.length > 0)
+    return PCO.multiAssert(x, assertions, (r, v) => v.length > 0 || r.length === 0)
   }
 
   /*

@@ -1,6 +1,6 @@
 {
   "name": "promise-composer",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "A tool allowing simple conditional composition with promises in JS",
   "main": "lib/promise-composer-build.js",
   "directories": {

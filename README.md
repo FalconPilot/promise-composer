@@ -1,4 +1,4 @@
-![Tests coverage](https://github.com/FalconPilot/promise-composer/blob/master/badges/tests.png|alt=Test_coverage)
+![Tests coverage](https://raw.githubusercontent.com/FalconPilot/promise-composer/master/badges/tests.png)
 
 # How to install ?
 

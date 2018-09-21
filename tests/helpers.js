@@ -1,4 +1,7 @@
 const PCO = require('../src/promise-composer.js')
+const badge = require('gh-badges')
+const fs = require('fs')
+const svg2img = require('svg2img')
 
 /*
 **  Test helpers
@@ -94,13 +97,57 @@ function generateReport(values) {
   console.log(`Final score : ${color}${score}/${values.length}${NC}`)
   if (faulty.length > 0) { renderSeparator("Faulty functions list") }
   faulty.forEach(x => console.log(x))
+
+  // Return object to pass informations
+  return {
+    score: score,
+    total: values.length
+  }
 }
 
+// Generate badges
+function generateBadges(data) {
+
+  // Colors and conditions
+  const colors = [{
+    label: "GREEN",
+    color: "#97CA00",
+    cond: (t, s) => s === t
+  }, {
+    label: "RED",
+    color: "#e05d44",
+    cond: (t, s) => s === 0
+  }, {
+    label: "YELLOW",
+    color: "#dfb317",
+    cond: (t, s) => s < t
+  }, {
+    label: "DEFAULT",
+    color: "#999",
+    cond: () => true
+  }]
+
+  // Configure badge
+  badge({
+    text: [ 'Tests coverage', ` ${data.score}/${data.total} ` ],
+    format: 'svg',
+    template: 'plastic',
+    colorA: "#333",
+    colorB: colors.filter(c => c.cond(data.total, data.score))[0].color
+
+  // Save badge to .png
+  }, (svg, err) => {
+    svg2img(svg, (err, buf) => { fs.writeFileSync('badges/tests.png', buf) })
+  })
+}
+
+// Exports
 module.exports = {
   test: test,
   testArray: testArray,
   renderSeparator: renderSeparator,
   generateReport: generateReport,
+  generateBadges: generateBadges,
   colors: {
     RED: RED,
     GRE: GRE,

@@ -1,6 +1,7 @@
 # Local directories
 tests
 src
+badges
 
 # Config files
 webpack.config.js

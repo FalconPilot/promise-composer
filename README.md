@@ -1,3 +1,5 @@
+[[https://github.com/FalconPilot/promise-composer/blob/master/badges/tests.png|alt=Test_coverage]]
+
 # How to install ?
 
 1. Run `npm install promise-composer`

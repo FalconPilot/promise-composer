@@ -19,4 +19,7 @@ if (process.argv.includes("--mute")) {
 }
 
 // Unit tests
-Promise.all(tests).then(H.generateReport).catch(console.log)
+Promise.all(tests)
+  .then(H.generateReport)
+  .then(H.generateBadges)
+  .catch(console.log)

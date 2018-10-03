@@ -1,13 +1,8 @@
 {
   "name": "promise-composer",
-  "version": "0.3.9",
+  "version": "0.3.10",
   "description": "A tool allowing simple conditional composition with promises in JS",
-  "main": "./lib/promise-composer-build.js",
-  "directories": {
-    "src": "src",
-    "lib": "lib",
-    "test": "tests"
-  },
+  "main": "index.js",
   "scripts": {
     "test": "node tests/start.js",
     "test-mute": "node tests/start.js --mute",

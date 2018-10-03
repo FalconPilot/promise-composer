@@ -10,6 +10,7 @@ class PCO {
   **  Class constants
   */
 
+  // Regular constants
   static get ASSERTION_FALSE() { return "PCO_ASSERTION_FALSE" }
 
   /*
@@ -26,13 +27,10 @@ class PCO {
     return assertion ? Promise.resolve(value) : Promise.resolve(PCO.ASSERTION_FALSE)
   }
 
-  // Local method to return pure value of assertion
+  // Local method to return assertion result instead of promise
   static pure(x, assertion) { return assertion }
 
-  /*
-  **  Create custom assertion function
-  */
-
+  // Allow custom assertions to be created
   static assert(x, assertFunc, func = PCO.result) {
     return func(x, assertFunc(x))
   }
